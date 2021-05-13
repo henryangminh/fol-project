@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>First Order Logic Resolution</title>
+    <!--Jquery Link-->
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- Bootstrap Styling-->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet"
+        id="bootstrap-css">
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+
+    <!-- custom stylesheet-->
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet" type="text/css">
+
+    <!-- custom javascript-->
+    <script src="{{ url_for('static',filename='js/index.js') }}"> </script>
+
+</head>
+
+<body>
+    <div class="col-lg-12">
+        <header>
+            <!-- Jumbotron -->
+            <div class="p-5 text-center bg-light">
+                <h1 class="mb-3">First Order Logic Resolution</h1>
+                <h4 class="mb-3">Step by step</h4>
+            </div>
+            <!-- Jumbotron -->
+        </header>
+
+        <div class="col-lg-6" id="reqs">
+            <div class="col-lg-12" style="margin-bottom:20px">
+                <h3>Input knowledge base</h3>
+                <div>
+                    <button class="btn btn-primary" type="button" value="Add" onclick="javascript:add();">Add</button>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="col-lg-6" id="proves">
+            <h3>Input proof</h3>
+            <div class="col-lg-12 input-group input-kb">
+                <input type="text" class="form-control" style="width:80%">
+                <button class="btn btn-primary" type="button" value="Add" onclick="">Prove</button>
+            </div>
+        </div>
+    </div>
+
+</html>
+</body>
+<!--
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet" type= "text/css">
+    <script src="{{ url_for('static',filename='js/index.js') }}"> </script>
+-->
