@@ -57,30 +57,66 @@ function get_all_knowledge_base() {
 
 $(document).ready(function () {
     $("#prove-btn").click(function () {
-        var knowledge_base = get_all_knowledge_base();
-        var proof = document.getElementById("proves").value;
-        console.log(knowledge_base)
+        // var knowledge_base = get_all_knowledge_base();
+        // var proof = document.getElementById("proves").value;
+        // console.log(knowledge_base)
+        // $.ajax({
+        //     type: 'GET',
+        //     url: "/resolution",
+        //     contentType: 'application/json;charset=UTF-8',
+        //     data: { "data": JSON.stringify(knowledge_base), "proof": proof },
+        //     success: function (response) {
+        //         console.log(response)
+        //         var div = document.getElementById('resolution-rs');
+        //         div.innerHTML = '';
+        //         response.forEach(
+        //             r => {
+        //                 if (r != "") {
+        //                     let pre = document.createElement('pre');
+        //                     pre.innerText = r;
+        //                     div.appendChild(pre);
+        //                 }
+        //             }
+        //         )
+        //     }
+        // })
+        var proof = document.getElementById("proves").value
+        let reqs = ""
+        let txtReqs = document.querySelectorAll('[id=txtReqs]');
+        txtReqs.forEach(e => {
+            if (e.value != '') {
+                reqs = e.value
+            }
+        })
+        $('#txtCal').show();
         $.ajax({
             type: 'GET',
             url: "/resolution",
             contentType: 'application/json;charset=UTF-8',
-            data: { "data": JSON.stringify(knowledge_base), "proof": proof },
+            data: { "data": JSON.stringify(reqs), "proof": proof },
             success: function (response) {
                 console.log(response)
+                $('#txtCal').hide();
                 var div = document.getElementById('resolution-rs');
                 div.innerHTML = '';
                 response.forEach(
                     r => {
-                        if (r != "")
-                        {
+                        if (r != "") {
                             let pre = document.createElement('pre');
                             pre.innerText = r;
                             div.appendChild(pre);
                         }
                     }
                 )
-            }
+            },
         })
-    })
+    });
+
+    $("textarea").each(function () {
+        this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
+    }).on("input", function () {
+        this.style.height = "auto";
+        this.style.height = (this.scrollHeight) + "px";
+    });
 }
 )
