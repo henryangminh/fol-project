@@ -22,6 +22,8 @@ def resolution():
 
         proof = request.args.get('proof')
 
+    knowledge_base = knowledge_base.split("\n")
+
     if knowledge_base is not None:
         with Capturing() as output:
             prove_by_resolution(knowledge_base, proof)
